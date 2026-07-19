@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prayers for Your Soul — A quiet prayer for wherever you are tonight</title>
+  <meta name="description" content="Prayers for Your Soul is a spoken-prayer podcast for the tired, the grieving, and the 3 AM worriers. New prayers every week, on Spotify and Apple Podcasts." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #d4a853;
+      --gold-light: #e8c97a;
+      --navy: #1a1a2e;
+      --navy-light: #222240;
+      --cream: #f5f0e8;
+      --cream-dark: #e8e0d0;
+      --text: #2c2c2c;
+      --text-light: #6b6b6b;
+      --white: #ffffff;
+      --spotify: #1DB954;
+      --apple: #FC3C44;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.25; }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 168, 83, 0.15);
+    }
+
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      color: var(--white); font-weight: 700;
+    }
+
+    .nav-logo img {
+      height: 48px; width: auto;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold); color: var(--navy); padding: 10px 22px;
+      border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(170deg, var(--navy) 0%, #16213e 50%, var(--navy-light) 100%);
+      padding: 120px 0 80px; position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(212,168,83,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(212,168,83,0.05) 0%, transparent 50%);
+    }
+
+    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 780px; margin: 0 auto; }
+
+    .hero-logo { width: 140px; height: auto; margin: 0 auto 32px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); }
+
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); margin-bottom: 24px; }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+
+    .hero-sub {
+      font-size: 1.15rem; color: rgba(255,255,255,0.65); max-width: 580px;
+      margin: 0 auto 40px; line-height: 1.8;
+    }
+
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+
+    .btn-platform {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px; border-radius: 50px; font-size: 0.95rem; font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-platform:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn-platform svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    .btn-spotify { background: var(--spotify); color: var(--white); }
+    .btn-apple { background: var(--white); color: var(--text); }
+
+    .hero-stats { display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); font-weight: 700; }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+    /* ── Sections ── */
+    section { padding: 100px 0; }
+
+    .section-label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px;
+      color: var(--gold); font-weight: 600; margin-bottom: 12px;
+    }
+
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 20px; }
+    .section-desc { color: var(--text-light); max-width: 640px; font-size: 1.05rem; line-height: 1.8; }
+
+    /* ── About ── */
+    .about-content { max-width: 700px; }
+    .about-content p { color: var(--text-light); font-size: 1.05rem; line-height: 1.9; margin-bottom: 24px; }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 48px; }
+    .feature {
+      background: var(--white); padding: 32px; border-radius: var(--radius);
+      box-shadow: var(--shadow); border-top: 3px solid var(--gold);
+    }
+    .feature h3 { font-size: 1.15rem; margin-bottom: 10px; }
+    .feature p { color: var(--text-light); font-size: 0.95rem; }
+
+    /* ── Episodes ── */
+    .episodes-section { background: var(--white); }
+
+    .episodes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; margin-top: 48px; }
+
+    .episode-card {
+      background: var(--cream); border-radius: var(--radius); padding: 28px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 3px solid var(--gold);
+    }
+    .episode-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+    .episode-hook { font-size: 0.85rem; color: var(--gold); font-style: italic; margin-bottom: 12px; }
+    .episode-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .episode-verse { font-size: 0.85rem; color: var(--text-light); font-style: italic; margin-bottom: 14px; }
+    .episode-meta { display: flex; align-items: center; justify-content: space-between; }
+    .episode-meta span { font-size: 0.8rem; color: var(--text-light); }
+
+    .play-btn {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s;
+    }
+    .play-btn:hover { background: var(--gold-light); }
+    .play-btn svg { width: 14px; height: 14px; fill: var(--navy); margin-left: 2px; }
+
+    .episodes-cta { text-align: center; margin-top: 48px; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid var(--gold); color: var(--gold); padding: 14px 32px;
+      border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── Night Prayers ── */
+    .night-section {
+      background: linear-gradient(170deg, var(--navy) 0%, #0f1123 100%);
+      color: var(--white);
+    }
+    .night-section .section-desc { color: rgba(255,255,255,0.6); }
+
+    .night-features { display: flex; flex-direction: column; gap: 12px; margin: 32px 0; }
+    .night-features li {
+      list-style: none; display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,0.7); font-size: 0.95rem;
+    }
+    .night-features li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    .night-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(212,168,83,0.2);
+      border-radius: var(--radius); padding: 32px; margin-top: 40px; max-width: 580px;
+    }
+    .night-card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 12px; }
+    .night-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .night-card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 20px; }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--navy); padding: 12px 28px;
+      border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    /* ── Coming Soon ── */
+    .coming-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-top: 48px; }
+    .coming-card {
+      background: var(--white); border-radius: var(--radius); padding: 32px;
+      box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .coming-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+    .coming-badge {
+      display: inline-block; font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--gold); font-weight: 600; margin-bottom: 12px;
+    }
+    .coming-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .coming-card p { color: var(--text-light); font-size: 0.95rem; }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--navy); color: rgba(255,255,255,0.5);
+      padding: 48px 0; text-align: center;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .footer-logo img { height: 36px; width: auto; }
+    .footer-logo span { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); }
+
+    .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.9rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.8rem; }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-links.active {
+        display: flex; flex-direction: column; position: absolute;
+        top: 72px; left: 0; right: 0; background: var(--navy);
+        padding: 24px; gap: 20px; border-bottom: 1px solid rgba(212,168,83,0.15);
+      }
+      .hero { padding: 100px 0 60px; }
+      .hero-logo { width: 110px; }
+      .hero-stats { gap: 28px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn-platform { width: 260px; justify-content: center; }
+      section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo">
+        <img src="logo.png" alt="Prayers for Your Soul logo" />
+      </a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#episodes">Episodes</a></li>
+        <li><a href="#night-prayers">Night Prayers</a></li>
+        <li><a href="#more">More</a></li>
+      </ul>
+      <a href="#listen" class="nav-cta">Listen now</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="listen">
+    <div class="container hero-content">
+      <img src="logo.png" alt="Prayers for Your Soul" class="hero-logo" />
+      <h1>A quiet prayer for<br/>wherever you are <em>tonight</em>.</h1>
+      <p class="hero-sub">Spoken prayers for the tired, the grieving, and the ones lying awake at 3&nbsp;AM doing the math again. No sermon. No performance. Just a voice that sits with you until it's time to sleep.</p>
+
+      <div class="hero-buttons">
+        <!-- SPOTIFY: substitua # pelo link real quando tiver -->
+        <a href="#" class="btn-platform btn-spotify">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Listen on Spotify
+        </a>
+        <!-- APPLE PODCASTS: substitua # pelo link real quando tiver -->
+        <a href="#" class="btn-platform btn-apple">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 0 0 0 5.34v13.32A5.328 5.328 0 0 0 5.34 24h13.32A5.328 5.328 0 0 0 24 18.66V5.34A5.328 5.328 0 0 0 18.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.6-.36 1.2-.96 1.2h-.12c-.48 0-.84-.36-.96-.84-.264-1.272-.744-2.352-1.68-3.36C14.98 5.024 13.428 4.308 11.7 4.308c-1.656 0-3.192.672-4.44 1.896-1.272 1.224-1.92 2.856-1.92 4.512 0 1.488.48 2.952 1.32 4.152.36.48.12 1.2-.36 1.56l-.12.072c-.48.288-1.08.12-1.38-.36-1.08-1.56-1.68-3.432-1.68-5.424 0-2.304.888-4.44 2.52-6.072C7.29 3.36 9.204 2.568 11.865 2.568zM12 7.128c1.296 0 2.496.504 3.432 1.44.792.792 1.28 1.728 1.44 2.832.072.48-.288.96-.768 1.032h-.12c-.432 0-.792-.312-.864-.744-.096-.684-.408-1.32-.912-1.824C13.56 9.216 12.816 8.88 12 8.88c-.816 0-1.56.336-2.208.984-.504.504-.816 1.14-.912 1.824-.072.432-.432.744-.864.744h-.12c-.48-.072-.84-.552-.768-1.032.16-1.104.648-2.04 1.44-2.832.936-.936 2.136-1.44 3.432-1.44zm-.048 4.032c.816 0 1.488.672 1.488 1.488 0 .624-.384 1.152-.912 1.368l.624 4.584c.072.48-.288.912-.768.96h-.84c-.48-.048-.84-.48-.768-.96l.624-4.584c-.528-.216-.912-.744-.912-1.368 0-.816.648-1.488 1.464-1.488z"/></svg>
+          Listen on Apple Podcasts
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">90,000+</div>
+          <div class="stat-label">prayers heard every month</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">Weekly</div>
+          <div class="stat-label">new episodes, every week</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4</div>
+          <div class="stat-label">continents listening in</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">The show</div>
+      <div class="about-content">
+        <p>Every episode of <strong>Prayers for Your Soul</strong> begins where you actually are &mdash; not where you're supposed to be.</p>
+        <p>Grief that hasn't found words yet. The kind of tired that coffee cannot fix. A bank balance you're afraid to check. We don't rush past the hard part to get to the hope.</p>
+        <p>We sit in it with you, for as long as it takes. Then we pray.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Who it's for</h3>
+          <p>Women carrying more than they say out loud &mdash; and anyone who needs a voice in the room at the end of a hard day.</p>
+        </div>
+        <div class="feature">
+          <h3>What each episode holds</h3>
+          <p>One theme, one season of life, one prayer &mdash; spoken slowly, meant to be listened to, not read.</p>
+        </div>
+        <div class="feature">
+          <h3>How often</h3>
+          <p>A new prayer every week, plus Night Prayers for subscribers on Sundays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episodes -->
+  <section class="episodes-section" id="episodes">
+    <div class="container">
+      <div class="section-label">Recent episodes</div>
+      <h2 class="section-title">Tonight's prayer, and the ones before it.</h2>
+      <p class="section-desc">A sample of what's in the feed. New episodes go up every week &mdash; the full archive lives on Spotify and Apple Podcasts.</p>
+
+      <div class="episodes-grid">
+        <div class="episode-card">
+          <div class="episode-hook">For the one still setting out two cups of coffee out of habit.</div>
+          <h3>A Prayer for the Grief That Has Nowhere to Go</h3>
+          <p class="episode-verse">"He heals the brokenhearted and binds up their wounds." &mdash; Psalm 147:3</p>
+          <div class="episode-meta">
+            <span>14 min &middot; Grief</span>
+            <a href="#" class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></a>
+          </div>
+        </div>
+
+        <div class="episode-card">
+          <div class="episode-hook">For the one whose thoughts won't stop long enough to sleep.</div>
+          <h3>A Prayer for the 3 AM Worrier</h3>
+          <p class="episode-verse">"Cast all your anxiety on him because he cares for you." &mdash; 1 Peter 5:7</p>
+          <div class="episode-meta">
+            <span>13 min &middot; Anxiety</span>
+            <a href="#" class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></a>
+          </div>
+        </div>
+
+        <div class="episode-card">
+          <div class="episode-hook">For the one doing the math again at midnight.</div>
+          <h3>A Prayer for the Bank Account You're Afraid to Check</h3>
+          <p class="episode-verse">"My God will meet all your needs." &mdash; Philippians 4:19</p>
+          <div class="episode-meta">
+            <span>15 min &middot; Provision</span>
+            <a href="#" class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></a>
+          </div>
+        </div>
+
+        <div class="episode-card">
+          <div class="episode-hook">For the one carrying a date nobody else remembers.</div>
+          <h3>A Prayer for the Anniversary No One Else Remembers</h3>
+          <p class="episode-verse">"The Lord is close to the brokenhearted." &mdash; Psalm 34:18</p>
+          <div class="episode-meta">
+            <span>14 min &middot; Grief</span>
+            <a href="#" class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="episodes-cta">
+        <a href="#" class="btn-outline">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          See all episodes on Spotify
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Night Prayers -->
+  <section class="night-section" id="night-prayers">
+    <div class="container">
+      <div class="section-label">New &middot; Subscriber series</div>
+      <h2 class="section-title" style="color: var(--white);">Night Prayers</h2>
+      <p class="section-desc">A longer format built for one purpose: to hold your hand until you fall asleep. The same prayer, spoken slower each time, so you have permission to stop listening before it ends.</p>
+
+      <ul class="night-features">
+        <li>35&ndash;45 minutes, meant to be left playing as you drift off</li>
+        <li>The core prayer repeats, softening in pace each time</li>
+        <li>New Night Prayer every Sunday</li>
+      </ul>
+
+      <a href="#" class="btn-gold">Start listening tonight</a>
+
+      <div class="night-card">
+        <div class="night-card-label">This Sunday</div>
+        <h3>A Night Prayer for the Ones Who Can't Turn Their Mind Off</h3>
+        <p>For the racing thoughts that show up right when the lights go out. Spoken slowly. Repeated gently. No reason to listen to the end.</p>
+        <a href="#" class="btn-gold">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Listen on Spotify
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section id="more">
+    <div class="container">
+      <div class="section-label">More from this voice</div>
+      <h2 class="section-title">Other shows in the works.</h2>
+
+      <div class="coming-grid">
+        <div class="coming-card">
+          <div class="coming-badge">Coming August 2026</div>
+          <h3>Faith Declarations</h3>
+          <p>Short, spoken affirmations grounded in scripture &mdash; for mornings when you need to hear who you actually are before the day tells you otherwise.</p>
+        </div>
+        <div class="coming-card">
+          <div class="coming-badge">Coming August 2026</div>
+          <h3>The Sinister Past</h3>
+          <p>True stories from the darker corners of history &mdash; unexplained disappearances, forgotten crimes, and places history would rather forget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <img src="logo.png" alt="Prayers for Your Soul" />
+        <span>Prayers for Your Soul</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+        <a href="#">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M5.34 0A5.328 5.328 0 0 0 0 5.34v13.32A5.328 5.328 0 0 0 5.34 24h13.32A5.328 5.328 0 0 0 24 18.66V5.34A5.328 5.328 0 0 0 18.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.6-.36 1.2-.96 1.2h-.12c-.48 0-.84-.36-.96-.84-.264-1.272-.744-2.352-1.68-3.36C14.98 5.024 13.428 4.308 11.7 4.308c-1.656 0-3.192.672-4.44 1.896-1.272 1.224-1.92 2.856-1.92 4.512 0 1.488.48 2.952 1.32 4.152.36.48.12 1.2-.36 1.56l-.12.072c-.48.288-1.08.12-1.38-.36-1.08-1.56-1.68-3.432-1.68-5.424 0-2.304.888-4.44 2.52-6.072C7.29 3.36 9.204 2.568 11.865 2.568zM12 7.128c1.296 0 2.496.504 3.432 1.44.792.792 1.28 1.728 1.44 2.832.072.48-.288.96-.768 1.032h-.12c-.432 0-.792-.312-.864-.744-.096-.684-.408-1.32-.912-1.824C13.56 9.216 12.816 8.88 12 8.88c-.816 0-1.56.336-2.208.984-.504.504-.816 1.14-.912 1.824-.072.432-.432.744-.864.744h-.12c-.48-.072-.84-.552-.768-1.032.16-1.104.648-2.04 1.44-2.832.936-.936 2.136-1.44 3.432-1.44zm-.048 4.032c.816 0 1.488.672 1.488 1.488 0 .624-.384 1.152-.912 1.368l.624 4.584c.072.48-.288.912-.768.96h-.84c-.48-.048-.84-.48-.768-.96l.624-4.584c-.528-.216-.912-.744-.912-1.368 0-.816.648-1.488 1.464-1.488z"/></svg>
+          Apple Podcasts
+        </a>
+        <a href="mailto:hello@prayersforyoursoul.com">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Prayers for Your Soul. A new prayer, every week.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
