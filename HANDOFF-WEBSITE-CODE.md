@@ -13,14 +13,15 @@ Este arquivo documenta a rotina de manutenção e melhoria contínua do site do 
 ## Acessos e permissões
 
 - **Git:** instalado (2.55.0.windows.5), com Git Credential Manager (2.9.1) disponível como credential helper. Nenhuma config global existia antes; identidade local configurada no repo: `user.name = Marcos Carvalho`, `user.email = marcos.carvalho.mfc@gmail.com`.
-- **GitHub:** repo é público, então leitura (clone/pull) não precisa de login. **Push precisa de autenticação** — na primeira vez, o Git Credential Manager abre um fluxo de login no navegador padrão. O Marcos precisa fazer esse login uma vez (ele mesmo, nunca o Claude) para destravar pushes futuros sem precisar estar na máquina.
-- **Netlify:** há um conector MCP (Netlify) já autorizado nesta sessão, com leitura confirmada (lista de projetos, deploys). Não é necessário login no Chrome para isso. Ações de escrita (redeploy manual, mudar configs) usam o mesmo conector, mas qualquer ação que afete produção é confirmada com o Marcos antes de executar.
-- **Chrome (extensão real, claude-in-chrome):** conectado e funcional nesta sessão. Usado para conferir o site publicado visualmente, checar o dashboard do Netlify e, se preciso, telas do GitHub. Login do Marcos no GitHub/Netlify dentro desse Chrome ainda não estava feito em 2026-11-18 — pedido a ele para fazer esse login.
+- **GitHub:** repo é público, então leitura (clone/pull) não precisa de login. **Push precisa de autenticação** — o Git Credential Manager abre um fluxo de login na primeira vez. Feito e confirmado em 2026-11-18 (push de teste do próprio handoff foi aceito e o Netlify redeployou em seguida) — pushes futuros não precisam mais do Marcos presente na máquina.
+- **Netlify:** há um conector MCP (Netlify) já autorizado nesta sessão, com leitura confirmada (lista de projetos, deploys) e deploy automático confirmado após o push de teste. Não é necessário login no Chrome para isso. Ações de escrita via conector (redeploy manual, mudar configs) que não sejam o fluxo normal de push ainda são confirmadas com o Marcos antes de executar.
+- **Chrome (extensão real, claude-in-chrome):** conectado e funcional nesta sessão. Usado para conferir o site publicado visualmente, checar o dashboard do Netlify e, se preciso, telas do GitHub.
 
-## Regra de publicação (não muda com a ausência do Marcos)
+## Regra de publicação
 
-- Qualquer `git push` para `main` publica direto em produção (prayersforyoursoul.com), então **sempre é confirmado com o Marcos antes**, mesmo com ele fora do terminal — a confirmação chega por mensagem nesta sessão e ele responde remotamente quando puder.
-- Mudanças ficam prontas (comitadas localmente) e descritas na sessão; o push só acontece depois do "sim" dele.
+- `git push` para `main` publica direto em produção (prayersforyoursoul.com).
+- **Conteúdo simples** (textos, episódios, correções pontuais): pode publicar sem perguntar antes — decisão do Marcos em 2026-11-18.
+- **Design/estrutura** (mudanças visuais, de layout ou de arquitetura do site): sempre pede confirmação antes do push, mesmo com o Marcos fora do terminal — a confirmação chega por mensagem nesta sessão e ele responde remotamente quando puder.
 
 ## Rotina de melhoria contínua (a definir com o Marcos / ajustar aqui conforme decidido)
 
