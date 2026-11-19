@@ -23,12 +23,15 @@ Este arquivo documenta a rotina de manutenção e melhoria contínua do site do 
 - **Conteúdo simples** (textos, episódios, correções pontuais): pode publicar sem perguntar antes — decisão do Marcos em 2026-11-18.
 - **Design/estrutura** (mudanças visuais, de layout ou de arquitetura do site): sempre pede confirmação antes do push, mesmo com o Marcos fora do terminal — a confirmação chega por mensagem nesta sessão e ele responde remotamente quando puder.
 
-## Rotina de melhoria contínua (a definir com o Marcos / ajustar aqui conforme decidido)
+## Rotina de melhoria contínua
 
-- [ ] Frequência da revisão (reativa / semanal / junto da rotina diária de comentários)
-- [ ] Escopo (só manter conteúdo sincronizado com episódios novos vs. também sugerir SEO/design/performance)
-- [ ] Onde ficam os pedidos de oração e dedicatórias do site em relação à lista `Pedidos_de_Oracao_PFYS.md` já usada nos outros shows
+- **Frequência:** revisão periódica (decisão do Marcos em 2026-11-18, enquanto ele está fora).
+- **Escopo:** conferir links, SEO básico e consistência do site com os episódios publicados; propor melhorias (design/estrutura sempre pede confirmação antes de publicar).
+- **Monitoramento de tráfego:** via conector Netlify (`netlify-observability-services-reader`), que lê os access logs de borda direto do projeto — não precisa de Google Analytics nem de script de terceiros no site. Limitação: plano free do Netlify só guarda 24h de logs; para enxergar tendência ao longo do tempo é preciso registrar snapshots periodicamente (ainda não automatizado).
+- [ ] Onde ficam os pedidos de oração e dedicatórias do site em relação à lista `Pedidos_de_Oracao_PFYS.md` já usada nos outros shows — ainda não decidido.
 
 ## Histórico desta sessão
 
 - 2026-11-18: localizado o projeto Netlify + repo GitHub (não havia cópia local no PC antes); clonado para `C:\Users\marco\Documents\prayersforyoursoul-site`; git configurado; este handoff criado como primeiro commit de teste do fluxo de push.
+- 2026-11-18: atualizada a seção "Recent episodes" (estava com episódios de julho) com os 6 mais recentes, dados reais via Spotify.
+- 2026-11-19: adicionado SEO básico (Open Graph/Twitter cards, canonical, robots.txt, sitemap.xml, link de YouTube no footer — canal não estava linkado no site). Primeira leitura de tráfego via Netlify logs: tráfego real quase zero ainda (maioria é bot/scanner de WordPress e requisições sem referrer; nenhum referral vindo de YouTube/Spotify/redes sociais foi detectado). Donation/doações: investigado, aguardando decisão do Marcos sobre plataforma (ver seção abaixo quando criada).
