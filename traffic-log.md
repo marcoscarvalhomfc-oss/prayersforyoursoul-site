@@ -1,5 +1,13 @@
 # PFYS — Traffic log (Netlify, janela de 24h)
 
+## 2026-11-20
+- Total: 851 requests nas últimas 24h (vs 806 ontem).
+- Por categoria: browser 423, other 343, crawler 51, tooling 29, page-preview 4, ai-agent 1.
+- Status: 404 = 628 (74%), 200 = 149, 301 = 62, 304 = 12 — de novo scanner sem referrer (ex.: /wp-admin/install.php ×12 em https + ×12 em http).
+- Top URLs: / (64), http:// / (20), /logo.png (13), www / (12), /robots.txt (11), ep-rejection/invisible/overthinking.webp (10 cada).
+- Top referrers: vazio (730), o próprio site (71), http://prayersforyoursoul.com (9), www (7), deploy previews *.netlify.app (7 cada), facebook.com (2). Nenhum referral de Spotify/YouTube/Apple.
+- Health-check ao vivo e links externos NÃO executados: prayersforyoursoul.com e hosts externos bloqueados pela rede da sessão. Local: todos os assets relativos do index.html existem no repo. Nada quebrado detectado.
+
 ## 2026-11-19
 - Total: 806 requests nas últimas 24h.
 - Por categoria: browser 698, tooling 63, other 32, crawler 13.
