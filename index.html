@@ -36,6 +36,8 @@
       --white: #ffffff;
       --spotify: #1DB954;
       --apple: #FC3C44;
+      --youtube: #FF0000;
+      --facebook: #1877F2;
       --radius: 12px;
       --shadow: 0 4px 24px rgba(0,0,0,0.08);
       --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
@@ -91,26 +93,23 @@
     }
     .nav-links a:hover { color: var(--gold); }
 
-    .nav-cta {
-      background: var(--gold); color: var(--navy); padding: 10px 22px;
-      border-radius: 50px; font-size: 0.85rem; font-weight: 600;
-      transition: background 0.3s;
-    }
-    .nav-cta:hover { background: var(--gold-light); }
-
     .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
 
     /* ── Hero ── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
-      background: linear-gradient(170deg, var(--navy) 0%, #16213e 50%, var(--navy-light) 100%);
+      background:
+        linear-gradient(170deg, rgba(26,26,46,0.93) 0%, rgba(22,33,62,0.88) 50%, rgba(34,34,64,0.94) 100%),
+        url('hero-hands.webp');
+      background-size: cover;
+      background-position: center 60%;
       padding: 120px 0 80px; position: relative; overflow: hidden;
     }
 
     .hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 20%, rgba(212,168,83,0.08) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 80%, rgba(212,168,83,0.05) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 30% 20%, rgba(212,168,83,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(212,168,83,0.06) 0%, transparent 50%);
     }
 
     .hero-content { position: relative; z-index: 2; text-align: center; max-width: 780px; margin: 0 auto; }
@@ -137,6 +136,7 @@
 
     .btn-spotify { background: var(--spotify); color: var(--white); }
     .btn-apple { background: var(--white); color: var(--text); }
+    .btn-youtube { background: var(--youtube); color: var(--white); }
 
     .hero-stats { display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; }
     .stat { text-align: center; }
@@ -207,28 +207,6 @@
     }
     .btn-outline:hover { background: var(--gold); color: var(--navy); }
 
-    /* ── Night Prayers ── */
-    .night-section {
-      background: linear-gradient(170deg, var(--navy) 0%, #0f1123 100%);
-      color: var(--white);
-    }
-    .night-section .section-desc { color: rgba(255,255,255,0.6); }
-
-    .night-features { display: flex; flex-direction: column; gap: 12px; margin: 32px 0; }
-    .night-features li {
-      list-style: none; display: flex; align-items: center; gap: 12px;
-      color: rgba(255,255,255,0.7); font-size: 0.95rem;
-    }
-    .night-features li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-
-    .night-card {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(212,168,83,0.2);
-      border-radius: var(--radius); padding: 32px; margin-top: 40px; max-width: 580px;
-    }
-    .night-card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 12px; }
-    .night-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-    .night-card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 20px; }
-
     .btn-gold {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--gold); color: var(--navy); padding: 12px 28px;
@@ -252,7 +230,11 @@
       letter-spacing: 1.5px; color: var(--gold); font-weight: 600; margin-bottom: 12px;
     }
     .coming-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-    .coming-card p { color: var(--text-light); font-size: 0.95rem; }
+    .coming-card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 20px; }
+    .coming-links { display: flex; gap: 16px; }
+    .coming-links a { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .coming-links a:hover { color: var(--gold); }
+    .coming-links svg { width: 16px; height: 16px; }
 
     /* ── Footer ── */
     .footer {
@@ -298,10 +280,9 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#episodes">Episodes</a></li>
-        <li><a href="#night-prayers">Night Prayers</a></li>
+        <li><a href="#support">Support</a></li>
         <li><a href="#more">More</a></li>
       </ul>
-      <a href="#listen" class="nav-cta">Listen now</a>
     </div>
   </nav>
 
@@ -316,6 +297,10 @@
         <a href="https://open.spotify.com/show/6Lmtkv0wU6eLOtBab7SGCZ" target="_blank" rel="noopener" class="btn-platform btn-spotify">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
           Listen on Spotify
+        </a>
+        <a href="https://www.youtube.com/channel/UCxyVRxCLp5O56N2oc9dCNbg" target="_blank" rel="noopener" class="btn-platform btn-youtube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.386.521a2.994 2.994 0 0 0-2.112 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.994 2.994 0 0 0 2.112 2.12c1.881.521 9.386.521 9.386.521s7.505 0 9.386-.521a2.994 2.994 0 0 0 2.112-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+          Watch on YouTube
         </a>
         <a href="https://podcasts.apple.com/us/podcast/prayers-for-your-soul/id1772483521" target="_blank" rel="noopener" class="btn-platform btn-apple">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 0 0 0 5.34v13.32A5.328 5.328 0 0 0 5.34 24h13.32A5.328 5.328 0 0 0 24 18.66V5.34A5.328 5.328 0 0 0 18.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.6-.36 1.2-.96 1.2h-.12c-.48 0-.84-.36-.96-.84-.264-1.272-.744-2.352-1.68-3.36C14.98 5.024 13.428 4.308 11.7 4.308c-1.656 0-3.192.672-4.44 1.896-1.272 1.224-1.92 2.856-1.92 4.512 0 1.488.48 2.952 1.32 4.152.36.48.12 1.2-.36 1.56l-.12.072c-.48.288-1.08.12-1.38-.36-1.08-1.56-1.68-3.432-1.68-5.424 0-2.304.888-4.44 2.52-6.072C7.29 3.36 9.204 2.568 11.865 2.568zM12 7.128c1.296 0 2.496.504 3.432 1.44.792.792 1.28 1.728 1.44 2.832.072.48-.288.96-.768 1.032h-.12c-.432 0-.792-.312-.864-.744-.096-.684-.408-1.32-.912-1.824C13.56 9.216 12.816 8.88 12 8.88c-.816 0-1.56.336-2.208.984-.504.504-.816 1.14-.912 1.824-.072.432-.432.744-.864.744h-.12c-.48-.072-.84-.552-.768-1.032.16-1.104.648-2.04 1.44-2.832.936-.936 2.136-1.44 3.432-1.44zm-.048 4.032c.816 0 1.488.672 1.488 1.488 0 .624-.384 1.152-.912 1.368l.624 4.584c.072.48-.288.912-.768.96h-.84c-.48-.048-.84-.48-.768-.96l.624-4.584c-.528-.216-.912-.744-.912-1.368 0-.816.648-1.488 1.464-1.488z"/></svg>
@@ -353,7 +338,7 @@
       <div class="features">
         <div class="feature">
           <h3>Who it's for</h3>
-          <p>Women carrying more than they say out loud &mdash; and anyone who needs a voice in the room at the end of a hard day.</p>
+          <p>Anyone carrying more than they say out loud &mdash; the exhausted, the grieving, the ones holding a family or a job together with both hands. If you need a voice in the room at the end of a hard day, this is for you.</p>
         </div>
         <div class="feature">
           <h3>What each episode holds</h3>
@@ -361,9 +346,22 @@
         </div>
         <div class="feature">
           <h3>How often</h3>
-          <p>A new prayer every week, plus Night Prayers for subscribers on Sundays.</p>
+          <p>A new prayer every week, like clockwork &mdash; something steady to come back to, however the week went.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section id="support" style="background: var(--cream-dark);">
+    <div class="container" style="text-align: center;">
+      <div class="section-label">Keep it going</div>
+      <h2 class="section-title">If this has held you, help it reach someone else.</h2>
+      <p class="section-desc" style="margin: 0 auto 32px;">This show runs on prayer and a little coffee. If a prayer here has helped you, a small gift keeps new ones coming &mdash; free, every week, for whoever needs one next.</p>
+      <a href="https://www.buymeacoffee.com/marcoscarvl" target="_blank" rel="noopener" class="btn-gold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.252-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.075-.96.108-1.371.138-1.001.072-2.009.116-3.013.095-.794-.017-1.586-.079-2.373-.182-.146-.019-.293-.038-.439-.058-.145-.021-.32-.04-.5-.063C4.997 2.027 5.07 1.9 5.158 1.827c.064-.054.153-.06.247-.07.332-.03.667-.051.999-.075 1.21-.093 2.42-.117 3.635-.064 1.213.054 2.42.17 3.618.405.34.065.7.14 1.02.22.37.09.57.37.665.735.15.573.276 1.154.396 1.737.14.655.274 1.316.405 1.98.07.35-.24.665-.577.665-1.025 0-1.6.025-2.35.025-2.32 0-4.65.09-6.96.33-.85.09-1.705.21-2.52.46-.56.17-1.06.42-1.45.84-.47.5-.69 1.17-.69 1.86 0 .33.09 2.09.9 2.31 2.39.65 4.9.8 7.36.42.2-.03.4-.07.59-.11.04.89.08 1.78.11 2.68.02.5.03 1 .05 1.5.01.4.11.79.46 1.02.3.2.68.28 1.04.34.75.13 1.52.17 2.28.09.76-.08 1.52-.26 2.19-.62.68-.37 1.26-.9 1.62-1.59.35-.67.5-1.42.56-2.17.07-.9.03-1.81-.04-2.71.98-.15 1.94-.37 2.86-.73.73-.29 1.47-.68 1.93-1.35.46-.68.57-1.56.37-2.34-.07-.27-.19-.53-.35-.76-.19-.27-.45-.47-.74-.59zm-5.84 7.97c-.05.52-.14 1.05-.36 1.53-.21.47-.54.86-.97 1.11-.42.25-.9.37-1.39.4-.52.03-1.04-.02-1.55-.14-.02-.96-.05-1.93-.07-2.89-.01-.3-.02-.6-.03-.9.86-.02 1.73-.07 2.59-.17.35-.04.69-.09 1.04-.15-.01.35-.02.7-.06 1.05-.01.05-.01.11-.01.16z"/></svg>
+        Buy us a coffee
+      </a>
     </div>
   </section>
 
@@ -451,64 +449,45 @@
     </div>
   </section>
 
-  <!-- Night Prayers -->
-  <section class="night-section" id="night-prayers">
-    <div class="container">
-      <div class="section-label">New &middot; Subscriber series</div>
-      <h2 class="section-title" style="color: var(--white);">Night Prayers</h2>
-      <p class="section-desc">A longer format built for one purpose: to hold your hand until you fall asleep. The same prayer, spoken slower each time, so you have permission to stop listening before it ends.</p>
-
-      <ul class="night-features">
-        <li>35&ndash;45 minutes, meant to be left playing as you drift off</li>
-        <li>The core prayer repeats, softening in pace each time</li>
-        <li>New Night Prayer every Sunday</li>
-      </ul>
-
-      <a href="https://open.spotify.com/show/6Lmtkv0wU6eLOtBab7SGCZ" target="_blank" rel="noopener" class="btn-gold">Start listening tonight</a>
-
-      <div class="night-card">
-        <div class="night-card-label">This Sunday</div>
-        <h3>A Night Prayer for the Ones Who Can't Turn Their Mind Off</h3>
-        <p>For the racing thoughts that show up right when the lights go out. Spoken slowly. Repeated gently. No reason to listen to the end.</p>
-        <a href="https://open.spotify.com/show/6Lmtkv0wU6eLOtBab7SGCZ" target="_blank" rel="noopener" class="btn-gold">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-          Listen on Spotify
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Coming Soon -->
+  <!-- More shows -->
   <section id="more">
     <div class="container">
       <div class="section-label">More from this voice</div>
-      <h2 class="section-title">Other shows in the works.</h2>
+      <h2 class="section-title">More voices from the same place.</h2>
+      <p class="section-desc">Two more shows from the same team, already live.</p>
 
       <div class="coming-grid">
         <div class="coming-card">
-          <div class="coming-badge">Coming August 2026</div>
+          <div class="coming-badge">Also from us &middot; Live now</div>
           <h3>Faith Declarations</h3>
           <p>Short, spoken affirmations grounded in scripture &mdash; for mornings when you need to hear who you actually are before the day tells you otherwise.</p>
+          <div class="coming-links">
+            <a href="https://open.spotify.com/show/033Or2xZmK1tKPta6oJeK7" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://www.youtube.com/channel/UC6Av2tQN4ESW7dJyMjesWlg" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.386.521a2.994 2.994 0 0 0-2.112 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.994 2.994 0 0 0 2.112 2.12c1.881.521 9.386.521 9.386.521s7.505 0 9.386-.521a2.994 2.994 0 0 0 2.112-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+              YouTube
+            </a>
+          </div>
         </div>
         <div class="coming-card">
-          <div class="coming-badge">Coming August 2026</div>
+          <div class="coming-badge">Also from us &middot; Live now</div>
           <h3>The Sinister Past</h3>
-          <p>True stories from the darker corners of history &mdash; unexplained disappearances, forgotten crimes, and places history would rather forget.</p>
+          <p>True stories from the darker corners of history &mdash; unexplained disappearances, forgotten crimes, and places history would rather forget. New episodes Tuesdays and Thursdays.</p>
+          <div class="coming-links">
+            <a href="https://open.spotify.com/show/4osKNtoLyLu9EVyKlTE3s8" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://www.youtube.com/channel/UCLvK1S-BAHZoPGKWVE7L4ZQ" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.386.521a2.994 2.994 0 0 0-2.112 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.994 2.994 0 0 0 2.112 2.12c1.881.521 9.386.521 9.386.521s7.505 0 9.386-.521a2.994 2.994 0 0 0 2.112-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+              YouTube
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Support -->
-  <section id="support" style="background: var(--cream-dark);">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">Keep it going</div>
-      <h2 class="section-title">If this has held you, help it reach someone else.</h2>
-      <p class="section-desc" style="margin: 0 auto 32px;">This show runs on prayer and a little coffee. If a prayer here has helped you, a small gift keeps new ones coming &mdash; free, every week, for whoever needs one next.</p>
-      <a href="https://www.buymeacoffee.com/marcoscarvl" target="_blank" rel="noopener" class="btn-gold">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.252-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.075-.96.108-1.371.138-1.001.072-2.009.116-3.013.095-.794-.017-1.586-.079-2.373-.182-.146-.019-.293-.038-.439-.058-.145-.021-.32-.04-.5-.063C4.997 2.027 5.07 1.9 5.158 1.827c.064-.054.153-.06.247-.07.332-.03.667-.051.999-.075 1.21-.093 2.42-.117 3.635-.064 1.213.054 2.42.17 3.618.405.34.065.7.14 1.02.22.37.09.57.37.665.735.15.573.276 1.154.396 1.737.14.655.274 1.316.405 1.98.07.35-.24.665-.577.665-1.025 0-1.6.025-2.35.025-2.32 0-4.65.09-6.96.33-.85.09-1.705.21-2.52.46-.56.17-1.06.42-1.45.84-.47.5-.69 1.17-.69 1.86 0 .33.09 2.09.9 2.31 2.39.65 4.9.8 7.36.42.2-.03.4-.07.59-.11.04.89.08 1.78.11 2.68.02.5.03 1 .05 1.5.01.4.11.79.46 1.02.3.2.68.28 1.04.34.75.13 1.52.17 2.28.09.76-.08 1.52-.26 2.19-.62.68-.37 1.26-.9 1.62-1.59.35-.67.5-1.42.56-2.17.07-.9.03-1.81-.04-2.71.98-.15 1.94-.37 2.86-.73.73-.29 1.47-.68 1.93-1.35.46-.68.57-1.56.37-2.34-.07-.27-.19-.53-.35-.76-.19-.27-.45-.47-.74-.59zm-5.84 7.97c-.05.52-.14 1.05-.36 1.53-.21.47-.54.86-.97 1.11-.42.25-.9.37-1.39.4-.52.03-1.04-.02-1.55-.14-.02-.96-.05-1.93-.07-2.89-.01-.3-.02-.6-.03-.9.86-.02 1.73-.07 2.59-.17.35-.04.69-.09 1.04-.15-.01.35-.02.7-.06 1.05-.01.05-.01.11-.01.16z"/></svg>
-        Buy us a coffee
-      </a>
     </div>
   </section>
 
@@ -531,6 +510,10 @@
         <a href="https://www.youtube.com/channel/UCxyVRxCLp5O56N2oc9dCNbg" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.386.521a2.994 2.994 0 0 0-2.112 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.994 2.994 0 0 0 2.112 2.12c1.881.521 9.386.521 9.386.521s7.505 0 9.386-.521a2.994 2.994 0 0 0 2.112-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
           YouTube
+        </a>
+        <a href="https://www.facebook.com/people/Prayers-for-your-Soul/61593689188133/" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
         </a>
         <a href="mailto:hello@prayersforyoursoul.com">Contact</a>
       </div>
