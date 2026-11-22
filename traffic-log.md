@@ -1,5 +1,13 @@
 # PFYS — Traffic log (Netlify, janela de 24h)
 
+## 2026-11-22
+- Total: 841 requests nas últimas 24h (vs 3.202 ontem — pico de scanners passou).
+- Por categoria: browser 665, tooling 80, other 58, crawler 34, ai-agent 3, page-preview 1.
+- Status: 404 = 343, 200 = 203, 301 = 203, 304 = 92. Sem 5xx.
+- Top URLs: https:// / (59), /logo.png (31), ep-invisible/overthinking/clear-mind/courage/scattered/rejection.webp (16 cada), /hero-hands.webp (15), http:// / (11).
+- Top referrers: vazio (616, 342 deles com erro/404 = scanners), o próprio site (130), ~10 deploy previews *.netlify.app (8 cada). Nenhum referral de Spotify/YouTube/Apple.
+- Health-check ao vivo e links externos NÃO executados: curl falhou (000) para todos os hosts — rede da sessão bloqueia. Local: todos os assets relativos do index.html (e hero-hands.webp) existem no repo. Nada quebrado detectado.
+
 ## 2026-11-21
 - Total: 3.202 requests nas últimas 24h (vs 851 ontem) — salto de ~3,8x, quase todo scanner.
 - Por categoria: sem categoria 2.463, other 642, browser 77, tooling 16, crawler 4.
