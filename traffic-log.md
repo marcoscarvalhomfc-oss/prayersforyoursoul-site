@@ -1,5 +1,13 @@
 # PFYS — Traffic log (Netlify, janela de 24h)
 
+## 2026-11-23
+- Total: 313 requests nas últimas 24h (vs 841 ontem — queda de ~63%).
+- Por categoria: browser 228, other 30, crawler 21, ai-agent 15, page-preview 11, tooling 8.
+- Status: 404 = 191, 200 = 62, 301 = 42, 206 = 9. Sem 5xx (404s são scanners).
+- Top URLs: https:// / (35), /robots.txt (20), /wp-admin/install.php (11 https + 11 http, todos 404), http:// / (11), www / (6+5), /logo.png (4), /xmlrpc.php (4, 404).
+- Top referrers: vazio (260, 185 com erro = scanners), o próprio site (32), variantes http/www do próprio domínio. Nenhum referral de Spotify/YouTube/Apple.
+- Health-check ao vivo e links externos NÃO executados: curl e WebFetch falharam (host não resolve na rede da sessão). Local: todos os assets relativos do index.html (e hero-hands.webp) existem no repo. Nada quebrado detectado.
+
 ## 2026-11-22
 - Total: 841 requests nas últimas 24h (vs 3.202 ontem — pico de scanners passou).
 - Por categoria: browser 665, tooling 80, other 58, crawler 34, ai-agent 3, page-preview 1.
