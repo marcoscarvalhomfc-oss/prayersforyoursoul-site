@@ -1,5 +1,13 @@
 # PFYS — Traffic log (Netlify, janela de 24h)
 
+## 2026-11-27
+- Total: 182 requests nas últimas 24h (vs 95 ontem).
+- Por categoria: browser 62, crawler 55, other 27, tooling 19, ai-agent 15, page-preview 3, vazio 1.
+- Status: 200 = 83, 301 = 51, 404 = 44, 206 = 2, 304 = 2. Sem 5xx; 404s são scanners (/wp-admin/install.php 12 https + 12 http, wp-includes).
+- Top URLs: / (33), /robots.txt (15), /wp-admin/install.php (12+12), /logo.png (10), www / (8), http:// / (8), http://www / (6).
+- Top referrers: vazio (119), o próprio site (30), www (8), deploy-preview netlify.app (8). Nenhum referral de Spotify/YouTube/Apple/Google.
+- Health-check ao vivo e links externos NÃO executados: curl falhou (000) — rede da sessão bloqueia os hosts. Local: todos os assets relativos do index.html existem no repo. Nada quebrado detectado.
+
 ## 2026-11-26
 - Total: 95 requests nas últimas 24h (vs 861 ontem — queda forte, volta ao patamar baixo).
 - Por categoria: browser 41, other 28, tooling 11, crawler 10, ai-agent 4, page-preview 1.
